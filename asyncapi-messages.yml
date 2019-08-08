@@ -1,13 +1,13 @@
 components:
   messages:
-  - OrderCreatedV1:
-  - PaymentApprovedV1:
-  - PaymentRejectedV1:
-  - OrderApprovedV1:
-  - OrderRejectedV1:
-  - OrderShippedV1:
-  - ReserveItemsV1:
-      name: ReserveItemsV1
+  - orderCreatedV1:
+  - paymentApprovedV1:
+  - paymentRejectedV1:
+  - orderApprovedV1:
+  - orderRejectedV1:
+  - orderShippedV1:
+  - reserveItemsV1:
+      name: reserveItemsV1
       title: Reserve Items for shipment
       summary: Command to reserve items for order that is waiting to be approved.
       description: A longer description
@@ -36,4 +36,4 @@ components:
       correlationId:
         description: Default Correlation ID
         location: $message.header#/correlationId
-  - ShipOrderV1:
+  - shipOrderV1:
