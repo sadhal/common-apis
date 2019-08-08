@@ -1,0 +1,11 @@
+{
+    "OrderCreatedV1": {},
+    "PaymentApprovedV1": {},
+    "PaymentRejectedV1": {},
+    "OrderApprovedv1": {},
+    "OrderRejectedV1": {},
+    "OrderShippedV1": {},
+
+    "ReserveItemsV1": {},
+    "ShipOrderV1": {}
+}
