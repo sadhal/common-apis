@@ -18,16 +18,16 @@ components:
       schemaFormat: application/json
       headers:
         headers:
-          $ref: 'https://raw.githubusercontent.com/sadhal/common-apis/master/asyncapi-common-elements.yml#/schemas/canonicalHeaders'
+          $ref: 'https://raw.githubusercontent.com/sadhal/common-apis/master/asyncapi-common-elements.yml#/components/schemas/canonicalHeaders'
       payload:
         type: object
         properties:
           messageId:
-            # $ref: 'https://raw.githubusercontent.com/sadhal/common-apis/master/asyncapi-common-elements.yml#/schemas/myUniqeId'
+            # $ref: 'https://raw.githubusercontent.com/sadhal/common-apis/master/asyncapi-common-elements.yml#/components/schemas/myUniqeId'
             type: string
             format: uuid
           sentAt:
-            # $ref: 'https://raw.githubusercontent.com/sadhal/common-apis/master/asyncapi-common-elements.yml#/schemas/sentAt'
+            # $ref: 'https://raw.githubusercontent.com/sadhal/common-apis/master/asyncapi-common-elements.yml#/components/schemas/sentAt'
             type: string
             format: date-time
       correlationId:
