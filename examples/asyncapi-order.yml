@@ -1,0 +1,190 @@
+asyncapi: '2.0.0-rc1'
+id: 'urn:se:sadmir:order'
+info:
+  title: Order API
+  version: '1.0.0'
+  description: |
+    The Order service API allows you to manage long running process.
+
+    ### Check out its awesome features:
+
+    * HTTP - Create orderId for webshop session 🌃
+    * HTTP - Place order 😎
+    * Receive real-time information about order workflow from collaborating services 📈
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+
+servers:
+  - url: api.broker.sadmir.se:{port}
+    protocol: jms
+    description: Production broker
+    #baseChannel: se/sadmir/order/1/0
+    baseChannel: se/sadmir
+    variables:
+      port:
+        description: Secure connection (TLS) is available through port 61616.
+        default: '61616'
+        enum:
+          - '61616'
+    security:
+      - user-password: []
+      # - apiKey: []
+      # - supportedOauthFlows:
+      #   - streetlights:on
+      #   - streetlights:off
+      #   - streetlights:dim
+      # - openIdConnectWellKnown: []
+  - url: api.broker.staging.sadmir.se:61616
+    protocol: jms
+    description: Staging env broker
+    baseChannel: se/sadmir
+    security:
+      - user-password: []
+  - url: api.broker.development.sadmir.se:61616
+    protocol: jms
+    description: Development env broker
+    baseChannel: se/sadmir
+    security:
+      - user-password: []
+
+defaultContentType: application/json
+
+channels:
+  event/order/created:
+    description: The queue on which order service self continues Saga (long running process) in different thread.
+    subscribe:
+      # $ref: '../asyncapi-operations.json#startNewOrderSagaV1'
+      summary: Receive information about new order and start Saga/long running process.
+      operationId: receiveStartOfSagaNewOrder
+      traits:
+        -
+          - $ref: '#/components/traits/docs'
+          - headerId: 'order-created'
+      message:
+        $ref: '#/components/messages/orderCreated'
+
+  command/inventory/reserveItems:
+    # parameters:
+    #   - $ref: '#/components/parameters/orderId'
+    publish:
+      summary: Send command to inventory service.
+      operationId: reserveItems
+      traits:
+        -
+          - $ref: '#/components/traits/docs'
+          - headerId: 'reserve-items'
+      message:
+        # $ref: '#/components/messages/reserveItemsV1'
+        $ref: "https://raw.githubusercontent.com/sadhal/common-apis/master/asyncapi-messages.yml#/components/messages/reserveItemsV1"
+
+  command/shipment/shipOrder:
+    # parameters:
+    #   - $ref: '#/components/parameters/orderId'
+    publish:
+      summary: Send command to inventory service.
+      operationId: shipOrder
+      traits:
+        -
+          - $ref: '#/components/traits/docs'
+          - headerId: 'ship-order'
+      message:
+        $ref: '#/components/messages/shipOrder'
+
+
+components:
+  messages:
+    orderCreated:
+      name: orderCreated
+      title: Order created
+      summary: Bla bla bla bla.
+      contentType: application/json
+      headers:
+        headers:
+          $ref: '#/components/schemas/canonicalHeaders'
+      traits:
+        -
+          - $ref: '#/components/traits/docs'
+          - headerId: 'order-id'
+      payload:
+        $ref: "#/components/schemas/orderCreatedPayload"
+    reserveItemsV1:
+      name: reserveItemsV1
+      title: Reserve items in inventory for this given order.
+      summary: Inform inventory that items for given order should be prepared for shipment.
+      traits:
+        -
+          - $ref: '#/components/traits/docs'
+          - headerId: 'message-reserve-items'
+      payload:
+        $ref: "#/components/schemas/reserveItemsPayload"
+    shipOrder:
+      name: shipOrder
+      title: Order is allowed to be shipped.
+      summary: Inform shipment that this given order should be shiped out.
+      traits:
+        -
+          - $ref: '#/components/traits/docs'
+          - headerId: 'message-reserve-items'
+      payload:
+        $ref: "#/components/schemas/reserveItemsPayload"
+
+  schemas:
+    canonicalHeaders:
+      type: object
+      properties:
+        applicationInstanceId:
+          description: Unique identifier for a given instance of the publishing application
+          type: string
+        correlationId:
+          description: Company standard identifier for correaltion of information exchange
+          type: string
+          format: uuid
+          example: 0efbcfd5-7ab0-43d6-8559-da3d86ae00a3
+    orderCreatedPayload:
+      type: object
+      properties:
+        eventId:
+          $ref: "#/components/schemas/myUniqeId"
+        domainEventName:
+          $ref: "#/components/schemas/domainEventName"
+        sentAt:
+          $ref: "#/components/schemas/sentAt"
+    reserveItemsPayload:
+      type: object
+      properties:
+        messageId:
+          $ref: "#/components/schemas/myUniqeId"
+        sentAt:
+          $ref: "#/components/schemas/sentAt"
+    sentAt:
+      type: string
+      format: date-time
+      description: Date and time when the message was sent.
+    myUniqeId:
+      type: string
+      format: uuid
+      description: Id for event.
+      example: 0efbcfd5-7ab0-43d6-8559-da3d86ae00a3
+    domainEventName:
+      type: string
+      format: string
+      description: Name for domain event.
+      example: OrderCreated
+
+  securitySchemes:
+    user-password:
+      type: userPassword
+      description: Provide your application's username and password for broker instance.
+
+  parameters:
+    orderId:
+      name: orderId
+      description: The ID of the streetlight.
+      schema:
+        type: string
+
+  traits:
+    docs:
+      externalDocs:
+        url: https://company.com/docs#
