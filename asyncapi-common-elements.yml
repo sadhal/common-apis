@@ -1,27 +1,28 @@
-schemas:
-  sentAt:
-    type: string
-    format: date-time
-    description: Date and time when the message was sent.
-  myUniqeId:
-    type: string
-    format: uuid
-    description: Id for event.
-    example: 0efbcfd5-7ab0-43d6-8559-da3d86ae00a3
-  domainEventName:
-    type: string
-    format: string
-    description: Name for domain event.
-    example: OrderCreated
-  canonicalHeaders:
-    type: object
-    properties:
-      correlationId:
-        description: Corporations own correlation ID set by application
-        type: string
-        format: uuid
-        example: 0efbcfd5-7ab0-43d6-8559-da3d86ae00a3
-      _type:
-        description: Jacksons type id mapper
-        type: string
-        example: se.sadmir.messaging.outbox.OutboxEvent
+components:
+  schemas:
+    sentAt:
+      type: string
+      format: date-time
+      description: Date and time when the message was sent.
+    myUniqeId:
+      type: string
+      format: uuid
+      description: Id for event.
+      example: 0efbcfd5-7ab0-43d6-8559-da3d86ae00a3
+    domainEventName:
+      type: string
+      format: string
+      description: Name for domain event.
+      example: OrderCreated
+    canonicalHeaders:
+      type: object
+      properties:
+        correlationId:
+          description: Corporations own correlation ID set by application
+          type: string
+          format: uuid
+          example: 0efbcfd5-7ab0-43d6-8559-da3d86ae00a3
+        _type:
+          description: Jacksons type id mapper
+          type: string
+          example: se.sadmir.messaging.outbox.OutboxEvent
