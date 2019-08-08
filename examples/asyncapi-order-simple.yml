@@ -1,0 +1,18 @@
+asyncapi: '2.0.0-rc1'
+id: 'urn:se:sadmir:order'
+info:
+  title: Order API
+  version: '0.0.1'
+servers:
+  - url: api.broker.development.sadmir.se:61616
+    protocol: jms
+    description: Development env broker
+    baseChannel: se/sadmir
+
+channels:
+  command/inventory/reserveItems:
+    publish:
+      summary: Send command to inventory service.
+      operationId: reserveItems
+      message:
+        $ref: 'https://raw.githubusercontent.com/sadhal/common-apis/master/asyncapi-messages.yml#/components/messages/reserveItemsV0Simple'
