@@ -39,20 +39,20 @@
                 "schemaFormat": "application/json",
                 "headers": {
                    "correlationId": {
-                      "$ref": "https://raw.githubusercontent.com/sadhal/common-apis/master/asyncapi-common-elements.yml#/schemas/headers/correlationId"
+                      "$ref": "https://raw.githubusercontent.com/sadhal/common-apis/master/asyncapi-common-elements.json#/schemas/headers/correlationId"
                    },
                    "_type": {
-                      "$ref": "https://raw.githubusercontent.com/sadhal/common-apis/master/asyncapi-common-elements.yml#/schemas/headers/_type"
+                      "$ref": "https://raw.githubusercontent.com/sadhal/common-apis/master/asyncapi-common-elements.json#/schemas/headers/_type"
                    }
                 },
                 "payload": {
                    "type": "object",
                    "properties": {
                       "messageId": {
-                         "$ref": "https://raw.githubusercontent.com/sadhal/common-apis/master/asyncapi-common-elements.yml#/schemas/myUniqeId"
+                         "$ref": "https://raw.githubusercontent.com/sadhal/common-apis/master/asyncapi-common-elements.json#/schemas/myUniqeId"
                       },
                       "sentAt": {
-                         "$ref": "https://raw.githubusercontent.com/sadhal/common-apis/master/asyncapi-common-elements.yml#/schemas/sentAt"
+                         "$ref": "https://raw.githubusercontent.com/sadhal/common-apis/master/asyncapi-common-elements.json#/schemas/sentAt"
                       }
                    }
                 },
