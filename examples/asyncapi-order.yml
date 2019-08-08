@@ -62,10 +62,10 @@ channels:
     publish:
       summary: Send command to inventory service.
       operationId: reserveItems
-      traits:
-        -
-          - $ref: '#/components/traits/docs'
-          - headerId: 'reserve-items'
+      #traits:
+        #-
+          #- $ref: '#/components/traits/docs'
+          #- headerId: 'reserve-items'
       message:
         # $ref: '#/components/messages/reserveItems'
         $ref: 'https://raw.githubusercontent.com/sadhal/common-apis/master/asyncapi-messages.yml#/components/messages/reserveItemsV1'
@@ -83,7 +83,17 @@ channels:
 
 
 components:
-  messages:
+  securitySchemes:
+    user-password:
+      type: userPassword
+      description: Provide your application's username and password for broker instance.
+
+  traits:
+    docs:
+      externalDocs:
+        url: https://raw.githubusercontent.com/sadhal/common-apis/master/docs#
+
+#  messages:
     # orderCreated:
     #   name: orderCreated
     #   title: Order created
@@ -119,7 +129,7 @@ components:
     #   payload:
     #     $ref: "#/components/schemas/reserveItemsPayload"
 
-  schemas:
+#  schemas:
     # canonicalHeaders:
     #   type: object
     #   properties:
@@ -162,12 +172,3 @@ components:
     #   description: Name for domain event.
     #   example: OrderCreated
 
-  securitySchemes:
-    user-password:
-      type: userPassword
-      description: Provide your application's username and password for broker instance.
-
-  traits:
-    docs:
-      externalDocs:
-        url: https://raw.githubusercontent.com/sadhal/common-apis/master/docs#
