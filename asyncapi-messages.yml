@@ -17,15 +17,16 @@ components:
       - name: command
       schemaFormat: application/json
       headers:
-        correlationId:
-          # $ref: "https://raw.githubusercontent.com/sadhal/common-apis/master/asyncapi-common-elements.yml#/schemas/headers/correlationId"
-          description: Corporations own correlation ID set by application
-          type: string
-        _type:
-          # $ref: "https://raw.githubusercontent.com/sadhal/common-apis/master/asyncapi-common-elements.yml#/schemas/headers/_type"
-          description: Jacksons type id mapper
-          type: string
-          example: se.sadmir.messaging.outbox.OutboxEvent
+        headers:
+          correlationId:
+            # $ref: "https://raw.githubusercontent.com/sadhal/common-apis/master/asyncapi-common-elements.yml#/schemas/headers/correlationId"
+            description: Corporations own correlation ID set by application
+            type: string
+          _type:
+            # $ref: "https://raw.githubusercontent.com/sadhal/common-apis/master/asyncapi-common-elements.yml#/schemas/headers/_type"
+            description: Jacksons type id mapper
+            type: string
+            example: se.sadmir.messaging.outbox.OutboxEvent
       payload:
         type: object
         properties:
