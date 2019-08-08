@@ -6,6 +6,10 @@ components:
     orderApprovedV1:
     orderRejectedV1:
     orderShippedV1:
+    reserveItemsV0Simple:
+      payload:
+        type: string
+        pattern: '^hello .+$'
     reserveItemsV1:
       name: reserveItemsV1
       title: Reserve Items for shipment
