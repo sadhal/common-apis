@@ -75,8 +75,8 @@ channels:
           - $ref: '#/components/traits/docs'
           - headerId: 'reserve-items'
       message:
-        # $ref: '#/components/messages/reserveItemsV1'
-        $ref: "https://raw.githubusercontent.com/sadhal/common-apis/master/asyncapi-messages.yml#/components/messages/reserveItemsV1"
+        # $ref: '#/components/messages/reserveItems'
+        $ref: 'https://raw.githubusercontent.com/sadhal/common-apis/master/asyncapi-messages.yml#/components/messages/reserveItemsV1'
 
   command/shipment/shipOrder:
     # parameters:
