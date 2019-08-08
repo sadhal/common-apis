@@ -1,0 +1,46 @@
+---
+OrderCreatedV1:
+---
+PaymentApprovedV1:
+---
+PaymentRejectedV1:
+---
+OrderApprovedV1:
+---
+OrderRejectedV1:
+---
+OrderShippedV1:
+---
+ReserveItemsV1:
+  name: ReserveItemsV1
+  title: Reserve Items for shipment
+  summary: Command to reserve items for order that is waiting to be approved.
+  description: A longer description
+  tags:
+  - name: inventory
+  - name: reserve items
+  - name: command
+  schemaFormat: application/json
+  headers:
+    correlationId:
+      $ref: "https://raw.githubusercontent.com/sadhal/common-apis/master/asyncapi-common-elements.yml#/schemas/headers/correlationId"
+      # description: Corporations own correlation ID set by application
+      # type: string
+    _type:
+      $ref: "https://raw.githubusercontent.com/sadhal/common-apis/master/asyncapi-common-elements.yml#/schemas/headers/_type"
+      # description: Jacksons type id mapper
+      # type: string
+      # example: se.sadmir.messaging.outbox.OutboxEvent
+  payload:
+    type: object
+    properties:
+      messageId:
+        $ref: "https://raw.githubusercontent.com/sadhal/common-apis/master/asyncapi-common-elements.yml#/schemas/myUniqeId"
+      sentAt:
+        $ref: "https://raw.githubusercontent.com/sadhal/common-apis/master/asyncapi-common-elements.yml#/schemas/sentAt"
+  correlationId:
+    description: Default Correlation ID
+    location: $message.header#/correlationId
+---
+ShipOrderV1:
+---
