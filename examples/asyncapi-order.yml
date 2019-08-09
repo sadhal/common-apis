@@ -42,7 +42,7 @@ servers:
     # security:
     #   - user-password: []
 
-defaultContentType: application/json
+#defaultContentType: application/json
 
 channels:
   command/inventory/reserveItems:
