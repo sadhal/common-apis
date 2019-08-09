@@ -1,4 +1,5 @@
-asyncapi: '2.0.0-rc1'
+#asyncapi: '2.0.0-rc1'
+asyncapi: 'unstable'
 id: 'urn:se:sadmir:order'
 info:
   title: Order API
