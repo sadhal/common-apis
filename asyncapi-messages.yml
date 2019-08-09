@@ -35,17 +35,20 @@ components:
       #         type: string
       #         example: se.sadmir.messaging.outbox.OutboxEvent
       payload:
-        type: object
-        properties:
-          messageId:
-            # $ref: 'https://raw.githubusercontent.com/sadhal/common-apis/master/asyncapi-common-elements.yml#/components/schemas/myUniqeId'
-            type: string
-            format: uuid
-          sentAt:
-            # $ref: 'https://raw.githubusercontent.com/sadhal/common-apis/master/asyncapi-common-elements.yml#/components/schemas/sentAt'
-            type: string
-            format: date-time
-      correlationId:
-        description: Default Correlation ID
-        location: $message.header#/correlationId
+        type: string
+        pattern: '^hello .+$'
+      # payload:
+      #   type: object
+      #   properties:
+      #     messageId:
+      #       # $ref: 'https://raw.githubusercontent.com/sadhal/common-apis/master/asyncapi-common-elements.yml#/components/schemas/myUniqeId'
+      #       type: string
+      #       format: uuid
+      #     sentAt:
+      #       # $ref: 'https://raw.githubusercontent.com/sadhal/common-apis/master/asyncapi-common-elements.yml#/components/schemas/sentAt'
+      #       type: string
+      #       format: date-time
+      # correlationId:
+      #   description: Default Correlation ID
+      #   location: $message.header#/correlationId
     shipOrderV1:
