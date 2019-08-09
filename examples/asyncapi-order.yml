@@ -16,34 +16,34 @@ info:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0
 
-servers:
-  - url: api.broker.sadmir.se:{port}
-    protocol: jms
-    description: Production broker
-    #baseChannel: se/sadmir/order/1/0
-    baseChannel: se/sadmir
-    # variables:
-    #   port:
-    #     description: Secure connection (TLS) is available through port 61616.
-    #     default: '61616'
-    #     enum:
-    #       - '61616'
-    # security:
-    #   - user-password: []
-  - url: api.broker.staging.sadmir.se:61616
-    protocol: jms
-    description: Staging env broker
-    baseChannel: se/sadmir
-    # security:
-    #   - user-password: []
-  - url: api.broker.development.sadmir.se:61616
-    protocol: jms
-    description: Development env broker
-    baseChannel: se/sadmir
-    # security:
-    #   - user-password: []
+# servers:
+#   - url: api.broker.sadmir.se:{port}
+#     protocol: jms
+#     description: Production broker
+#     #baseChannel: se/sadmir/order/1/0
+#     baseChannel: se/sadmir
+#     # variables:
+#     #   port:
+#     #     description: Secure connection (TLS) is available through port 61616.
+#     #     default: '61616'
+#     #     enum:
+#     #       - '61616'
+#     # security:
+#     #   - user-password: []
+#   - url: api.broker.staging.sadmir.se:61616
+#     protocol: jms
+#     description: Staging env broker
+#     baseChannel: se/sadmir
+#     # security:
+#     #   - user-password: []
+#   - url: api.broker.development.sadmir.se:61616
+#     protocol: jms
+#     description: Development env broker
+#     baseChannel: se/sadmir
+#     # security:
+#     #   - user-password: []
 
-#defaultContentType: application/json
+defaultContentType: application/json
 
 channels:
   command/inventory/reserveItems:
